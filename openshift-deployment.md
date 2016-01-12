@@ -11,7 +11,7 @@ openshift的官方安装rpm包 yum源地址可以在openshift集群部署工程o
 会下载所有openvswitch的安装包,一次openshift集群的安装需要下载最新的openshift和openvswitch安装包,以及相应的元数据文件目录"repodata"  
 
 1. docker安装程序yum.repo.d配置文件    
-openshift一度还不支持docker1.9,如果使用rhel7.1以上操作系统安装openshift借助配置一个阿里云的centos源来方便安装docker1.8,配置文件如下,文件任意起名后放在/etc/yum.repo.d/:
+openshift一度还不支持docker1.9,如果使用rhel7.1以上操作系统安装openshift借助配置一个阿里云的centos源来方便安装docker1.8,配置文件如下,文件任意起名后放在/etc/yum.repo.d/:  
 [centos-extra]  
 name=centos extra  
 baseurl=http://mirrors.aliyun.com/centos/7/extras/x86_64/  
