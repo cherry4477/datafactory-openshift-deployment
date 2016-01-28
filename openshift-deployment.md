@@ -19,7 +19,7 @@ enabled=1
 gpgcheck=0  
 
 1. 其他准备同官方文档,配置主从节点的ssh互信,安装各种依赖包,docker程序,给docker配置存储卷等,  
-  集群部署工具ansible程序没有通过yum方式安装而是通过pip install ansible来安装的,需要提前装好gcc,python-devel,pyOpenSSL包  
+  集群部署工具ansible程序没有通过yum方式安装而是通过pip install ansible==1.9.4来安装的,需要提前装好gcc,python-devel,pyOpenSSL包  
 ```
   curl -O https://bootstrap.pypa.io/get-pip.py   
   sudo python get-pip.py
