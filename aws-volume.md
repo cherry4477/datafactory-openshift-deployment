@@ -80,10 +80,11 @@ spec:
   用户可以根据自己需要加入若干个可持久化卷，无需管理员手动干预
   
 openshift 添加持久化卷的流程(AWS)：
+```
 create_ec2_volume(AZ) ---> create_openshift_persistent_volume ---
                                                                  | ---> bounding ---> deployment_config_mount_point
                                create_persistent_volume_claim ---
-
+```
 自动化流程建议：
   1. 修改openshift pvc controller, 监听用户的pvc请求，处理请求的时候可以同时创建一个pv与之配对；
   2. 或者新建一个controller, 处理请求并实现以上功能；
