@@ -31,6 +31,19 @@ gpgcheck=0
  例如:ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml -i any_inventory_file  
 1. openshift-ansible的bug应该很少,但是每次都要使用最新的rpm包和最新的ansible脚本来安装,如果不存在网络,软件兼容性问题安装应该会很顺利,把安装需要的rpm下载到自建的yum源后,安装也比较快.  
 
+
+##节点扩容
+1.修改inventroy file,在[OSEv3:children]节点下增加new_nodes组
+2.修改inventroy file,增加需要扩容的节点信息并放入[new_nodes]节点下,例如
+[new_nodes]
+ip-172-31-11-41.cn-north-1.compute.internal openshift_node_labels="{'region': 'product', 'zone': 'default'}"
+ip-172-31-11-42.cn-north-1.compute.internal openshift_node_labels="{'region': 'product', 'zone': 'default'}"
+3.最后执行ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-nod/scaleup.yml -i [your-inv-file-name]
+4.测试新加节点网络配置,节点调度,build,deploy功能是否正常
+5.为了保证新加节点和已有节点版本一致,可以在inventroy file中增加openshift安装版本参数
+openshift_pkg_version=-1.1.0.1
+
+
 ## 后续问题  
 1. 如何安装指定版本的openshift,如果直接clone最新的ansible脚本来安装需要有最新的openshift   yum源,这样可能会错过相对稳定的openshift版本,解决办法应该是在搭建yum源的时候按指定的openshift版本重新生成yum源下的repodata文件,有待验证  
 1. 目前安装都是单主节点,单etcd,单router方式,为了提高可用性需要搭建多主节点,多etcd节点,多router节点的集群  
