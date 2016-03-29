@@ -89,3 +89,25 @@ create_ec2_volume(AZ) ---> create_openshift_persistent_volume ---
   1. 修改openshift pvc controller, 监听用户的pvc请求，处理请求的时候可以同时创建一个pv与之配对；
   2. 或者新建一个controller, 处理请求并实现以上功能；
   3. 或者功能在service broker里实现功能；
+
+pvc自动创建pv配置实例
+{
+  "kind": "PersistentVolumeClaim",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "pvc-var-lib-ldap1",
+    "annotations": {
+        "volume.alpha.kubernetes.io/storage-class": "foo"
+    }
+  },
+  "spec": {
+    "accessModes": [
+      "ReadWriteOnce"
+    ],
+    "resources": {
+      "requests": {
+        "storage": "3Gi"
+      }
+    }
+  }
+}
