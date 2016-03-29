@@ -91,6 +91,7 @@ create_ec2_volume(AZ) ---> create_openshift_persistent_volume ---
   3. 或者功能在service broker里实现功能；
  
 pvc自动创建pv配置实例  
+```  
 {  
   "kind": "PersistentVolumeClaim",  
   "apiVersion": "v1",  
@@ -111,3 +112,4 @@ pvc自动创建pv配置实例
     }  
   }  
 }  
+```  
