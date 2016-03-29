@@ -9,6 +9,7 @@
 1. 登录到openshift的主机 cd /etc/orign/master
 2. sudo vi master-config.yaml
 3. 找到oauthConfig: 这一参数注意不要删除里面的内容。只做相应的添加。
+```  
        provider:
          apiVersion: v1
          kind: LDAPPasswordIdentityProvider
@@ -25,7 +26,7 @@
          bindPassword: "secret"
          insecure: true
          url:"ldap://54.223.94.93:389/dc=example,dc=com?uid"
-
+```  
 ## 找到bindDN、bindPassword、以及url的参数配置
 1. 添加对应的参数：
 2. bindDN是上述 UserDN
