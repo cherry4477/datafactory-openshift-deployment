@@ -4,7 +4,8 @@ registry使用nginx与openshift所用的ldap结合，用ldap做认证，存储�
 registry的编排文件见https://github.com/asiainfoLDP/nginx-registry/blob/master/registry.yaml
 
 2.配置nginx，起三个nginx的pod以保证高可用
-nginx的项目见https://github.com/asiainfoLDP/nginx-registry，nginx的编排文件见https://github.com/asiainfoLDP/nginx-registry/blob/master/auth-registry-openshift.yaml
+nginx的项目见https://github.com/asiainfoLDP/nginx-registry
+nginx的编排文件见https://github.com/asiainfoLDP/nginx-registry/blob/master/auth-registry-openshift.yaml
 nginx的配置需要注意的有以下几点：
     
   2.1 upstream docker-registry {
