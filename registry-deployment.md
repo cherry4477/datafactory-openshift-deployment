@@ -30,8 +30,8 @@ registry使用nginx与openshift所用的ldap结合，用ldap做认证，存储�
 3.创建route
 
 注意这里的router的创建要通过命令行方式，不要通过expose svc的方式再去修改route的方式！
-创建router的命令：oc create route edge --service=service name of nginx --cert=XXX.crt --cert=XXX.cert --hostname=XXX
-而后oc edit route,加入insecureEdgeTerminationPolicy: redirect这句话
+创建router的命令：oc create route edge --service=service name of nginx --cert=XXX.crt --key=XXX.key --hostname=XXX
+而后oc edit route,加入insecureEdgeTerminationPolicy: Redirect这句话
 
 4.验证route是否正确
 
