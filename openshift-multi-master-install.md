@@ -41,7 +41,7 @@ osm_cluster_network_cidr=172.16.0.0/16
 10.1.130.126 containerized=true
 ```
 ### install 步骤
-1. install ansible
+1. install docker ansible, docker pull registry.dataos.io/openshift/{origin, node, openvswitch, origin-docker-registry, origin-docker-haproxy, origin-pod, origin-docker-builder, origin-deployer} 
 2. git clone https://github.com/openshift/openshift-ansible.git
 3. ansible-playbook -i host openshift-ansible/playbook/byo/config.yaml
 4. 安装完成后，oc get node 验证
