@@ -1,0 +1,19 @@
+In this process RDS and ldap and s3 will be used.
+
+1 The SQL script located in https://github.com/asiainfoLDP/harbor/blob/master/Deploy/db/registry.sql has been executed in RDS mysql
+
+2 Certificates should be prepared well for they will be used when create the proxy route. If certificates are not prepared, which means
+  proxy route only could be visited via http, configuration realm in harbor/Deploy/templates/registry/config.yml should be http://proxy-svc-ip:80/service/token
+  Otherwise, configuration realm can be either http://proxy-route/service/token or proxy-route/service/token
+
+3 Use the registry.rc.yml located in harbor/Deploy/kubernetes/registry-rc.yaml to create the registry pod. Prior to the command oc create -f, the secret mounted 
+  into the pod should be created via /harbor/Deploy/templates/registry/config.yml and harbor/Deploy/config/registry/root.crt
+  
+4 Use the registry.svc.yml located in harbor/Deploy/kubernetes/registry-svc.yaml to create the registry svc
+
+5 Use the ui.rc.yml located in /harbor/Deploy/kubernetes/ui-rc.yaml to create the ui pod
+
+6 use the ui.svc.yml located in /harbor/Deploy/kubernetes/ui-svc.yaml to create the ui svc
+
+7 use the proxy.rc.yml to create the proxy pod. prior to the command oc create -f the secret mounted into the pod should be created via /harbor/Deploy/config/nginx/nginx.conf
+  In the nginx.conf, 
