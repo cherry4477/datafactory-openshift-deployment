@@ -139,13 +139,24 @@ export PGDATABASE=share
 	$gpconfig -s wal_send_client_timeout
 	$gpstate
 
+##设置可以从外网访问
+$cd /data/master/gpseg-1
+	$vi pg_hba.conf
+	host	 all         all	     0.0.0.0/0     password
+	也可以将password修改为md5
+
+##修改主密码
+	$psql share
+	alter user pgadmin with password 'xxx'
+	
+
 ##其他问题
 1.内网不是所有端口都通，特别是一些高阶端口
 2.不支持centos7.2
 3.需要执行yum install ed，因为需要这个，否则会在初始化的时候莫名其妙出错
 
 ##遗留工作
-1.设置可以从外网访问greenplum
+
 2.研究建立账户和权限的机制
 3.资源隔离
 
