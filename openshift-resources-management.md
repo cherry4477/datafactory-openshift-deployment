@@ -11,8 +11,8 @@ kubeletArguments:
 3. [Allocatable] = [Node Capacity] - [kube-reserved] - [system-reserved]
 4. 查看 Node 可分配资源和容量  
 `oc get node/<node_name> -o yaml`   
-5. 保留系统和 kubelet ,可以保证系统不被 hang 死
-#### infor links
+5. 保留系统和 kubelet ,可以保证系统不被 hang 死   
+#### info links
 https://docs.openshift.org/latest/admin_guide/allocating_node_resources.html
 
 ### Resource Quota
