@@ -1,12 +1,13 @@
 ### Allocating Node Resources
-1. edit /etc/origin/node/node-config.yaml 
+1. edit /etc/origin/node/node-config.yaml    
 ```
 kubeletArguments:
   kube-reserved:
     - "cpu=200m,memory=30G"
   system-reserved:
     - "cpu=200m,memory=30G"
-```
+```   
+
 2. restart node service
 3. [Allocatable] = [Node Capacity] - [kube-reserved] - [system-reserved]
 4. 查看 Node 可分配资源和容量  
