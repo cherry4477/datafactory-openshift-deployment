@@ -66,5 +66,5 @@ vi root-gv_test.log
 ```
 
 ###   通过pv/pvc将盘挂在到openshift中提示“Error syncing pod, skipping: unsupported volume type”
-先检查要挂载的盘是否正常，任意找一个glusterfs node挂载glusterfs盘排除盘自身问题
+先检查要挂载的盘是否正常，任意找一个glusterfs node挂载glusterfs盘排除盘自身问题  
 可以直接使用glusterfs存储插件方式挂载盘，而不是pv/pvc方式，看看是否为存储插件问题
