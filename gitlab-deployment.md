@@ -120,4 +120,6 @@ status: {}
 4. debug gitlab errors, oc rsh git-pod-name and check logs 
 5. for more information, view https://hub.docker.com/r/sameersbn/gitlab/
 
-
+### 问题处理
+1、服务器重启后无法访问gitlab ssh服务端口
+gitlab ssh服务是通过kubernetes service node-port方式实现，也就是kubernetes会在每个节点上为service占用特定端口，可以通过访问每个节点上的指定端口都可以使用gitlab的ssh服务，但是需要在每个节点上iptables开放gitlab ssh 指定的端口，如果在没有保存iptables规则的情况下重启服务，这条路由就会丢失，导致gitlab ssh服务无法使用。
