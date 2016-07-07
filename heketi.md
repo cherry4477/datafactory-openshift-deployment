@@ -4,13 +4,13 @@ Heketi provides a RESTful management interface which can be used to manage the l
 ### Workflow  
 When a request is received to create a volume, Heketi will first allocate the appropriate storage in a cluster, making sure to place brick replicas across failure domains.  It will then format, then mount the storage to create bricks for the volume requested.  Once all bricks have been automatically created, Heketi will finally satisfy the request by creating, then starting the newly created GlusterFS volume.  
 
-### 优点
-1、帮助管理glusterfs集群物理卷，heketi可以调用lvcreate命令从glusterfs集群中的物理盘中划分所需空间并且均衡节点间空间使用
-2、帮助管理glusterfs bricks，heketi在划分好空间后可以完成glusterfs volume的创建
-3、提供restapi
+### 优点  
+1、帮助管理glusterfs集群物理卷，heketi可以调用lvcreate命令从glusterfs集群中的物理盘中划分所需空间并且均衡节点间空间使用  
+2、帮助管理glusterfs bricks，heketi在划分好空间后可以完成glusterfs volume的创建  
+3、提供restapi  
 
-### 缺点
-1、heketi集群元数据存储的单点
+### 缺点  
+1、heketi集群元数据存储的单点    
 
 ## 安装  
 [wiki/Installation](https://github.com/heketi/heketi/wiki/Installation)  
