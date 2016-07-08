@@ -91,19 +91,19 @@ When a request is received to create a volume, Heketi will first allocate the ap
 7、heketi-cli topology load --json=topology.json  
 8、heketi-cli volume create --size=10  
 
-## 常见问题
-1、到glusterfs集群网络不通，确保glusterfs node上的端口都已正确开放
-```
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24007 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24008 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 2222 -j ACCEPT
--A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m multiport --dports 49152:49251 -j ACCEPT
-```
+## 常见问题  
+1、到glusterfs集群网络不通，确保glusterfs node上的端口都已正确开放  
+```   
+-A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24007 -j ACCEPT  
+-A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 24008 -j ACCEPT  
+-A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m tcp --dport 2222 -j ACCEPT  
+-A OS_FIREWALL_ALLOW -p tcp -m state --state NEW -m multiport --dports 49152:49251 -j ACCEPT  
+```  
 
-2、创建的卷不能再POD中挂载
-检查glusterfs客户端都已正确安装,yum install glusterfs-client
-检查glusterfs endpoint是否存在
-检查操作系统中glusterd服务是否启动
+2、创建的卷不能再POD中挂载  
+检查glusterfs客户端都已正确安装,yum install glusterfs-client  
+检查glusterfs endpoint是否存在  
+检查操作系统中glusterd服务是否启动  
 
-3、glusterfs endpoint丢失
-检查glusterfs endpoint对应的service是否存在
+3、glusterfs endpoint丢失  
+检查glusterfs endpoint对应的service是否存在  
