@@ -91,6 +91,45 @@ When a request is received to create a volume, Heketi will first allocate the ap
 7、heketi-cli topology load --json=topology.json  
 8、heketi-cli volume create --size=10  
 
+
+## 鉴权
+heketi使用JWT规范完成鉴权，内置两种角色admin、user，秘钥的生成可以通过如下python代码完成  
+1、安装python 依赖包  
+```  
+pip install PyJWT
+```  
+2、生成秘钥  
+```  
+import jwt  
+import datetime  
+import hashlib  
+   
+method = 'GET'  
+uri = '/volumes'   
+secret = 'My secret'   
+   
+claims = {}   
+   
+# Issuer   
+claims['iss'] = 'admin'   
+   
+# Issued at time   
+claims['iat'] = datetime.datetime.utcnow()   
+   
+# Expiration time   
+claims['exp'] = datetime.datetime.utcnow() \   
+    + datetime.timedelta(minutes=10)   
+   
+# URI tampering protection   
+claims['qsh'] = hashlib.sha256(method + '&' + uri).hexdigest()   
+   
+print jwt.encode(claims, secret, algorithm='HS256')   
+```   
+3、修改heketi-config.json（独立安装方式）或者设置HEKETI_USER_KEY、HEKETI_ADMIN_KEY环境变量（容器安装方式）
+4、使用heketi-cli连接集群
+```
+heketi-cli --server http://<server:port> --user <user> --secret <secret> cluster list
+```
 ## 常见问题  
 1、到glusterfs集群网络不通，确保glusterfs node上的端口都已正确开放  
 ```   
