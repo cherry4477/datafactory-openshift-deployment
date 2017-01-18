@@ -1,3 +1,4 @@
+#引用自https://github.com/wfw2046/Document/blob/master/network/Calico-on-Openshift.md
 #  一、安装openshift
 host文件如下：
 ``` 
